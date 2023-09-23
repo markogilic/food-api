@@ -1,4 +1,4 @@
-function ShowRanFood(veg: any) {
+function ShowRanFood(veg) {
    console.log(veg);
    return (
       <div>

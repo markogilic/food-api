@@ -3,6 +3,17 @@ const jsonServer = require('json-server')
 const server = jsonServer.create()
 const router = jsonServer.router('db.json')
 const middlewares = jsonServer.defaults()
+const cors = require('cors');
+
+server.use(
+    cors({
+        origin: true,
+        credentials: true,
+        preflightContinue: false,
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    })
+);
+server.options('*', cors());
 
 // const hash = crypto.createHash('md5').update('token').digest("hex")
 
@@ -75,6 +86,6 @@ server.use((req, res, next) => {
 
 server.use(router)
 
-server.listen(3000, () => {
+server.listen(3456, () => {
     console.log('JSON Server is running')
 })
